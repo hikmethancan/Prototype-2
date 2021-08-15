@@ -811,6 +811,7 @@ GameObject:
   - component: {fileID: 2749437193148880815}
   - component: {fileID: 2749437191710906254}
   - component: {fileID: 2233484316946543355}
+  - component: {fileID: 7072001505266164465}
   m_Layer: 0
   m_Name: SimpleFarmer_Woman_01_Brown
   m_TagString: Untagged
@@ -869,6 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalInput: 0
+  verticalInput: 0
   speed: 14
   projectTilePrefab: {fileID: 6651448033447943467, guid: 4a05b75c41806bb49a84fd1955f0ffae, type: 3}
 --- !u!65 &2233484316946543355
@@ -882,8 +884,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.3235643, z: 1}
-  m_Center: {x: 0, y: 1.1617821, z: 0}
+  m_Size: {x: 1, y: 3.0111272, z: 1}
+  m_Center: {x: 0, y: 1.3180007, z: 0}
+--- !u!54 &7072001505266164465
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749437193141593199}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1 &2749437193141593201
 GameObject:
   m_ObjectHideFlags: 0

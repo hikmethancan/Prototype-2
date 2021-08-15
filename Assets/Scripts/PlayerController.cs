@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float horizontalInput;
+    [SerializeField] float verticalInput;
     [SerializeField] float speed;
 
     [SerializeField] GameObject projectTilePrefab;
+
+    [SerializeField] GameObject gameManager;
 
 
     private void Update()
@@ -20,7 +23,8 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+        verticalInput = Input.GetAxis("Vertical");
+        transform.Translate(horizontalInput * Time.deltaTime * speed,0,verticalInput *Time.deltaTime *speed);
     }
 
     void ThrowPizza()
@@ -42,5 +46,27 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(15f, transform.position.y, transform.position.z);
         }
+        else if (transform.position.z < -1.5f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -1.5f);
+        }
+        else if (transform.position.z > 16f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 15f);  
+        }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Animal")
+        {
+            gameManager.GetComponent<GameManager>().GameOverPanel();
+        }
+
+    }
+
+
+
+
+
 }
