@@ -16,14 +16,9 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnRandom", startDelay, spawnTime);
     }
 
-    private void Update()
-    {
-
-    }
-
     void SpawnRandom()
     {
-        Vector3 spawnPos = new Vector3(Random.Range(-randomRangeX, randomRangeX), 0, 20);
+        Vector3 spawnPos = new Vector3(Random.Range(-randomRangeX, randomRangeX), 0, 18);
         int animalIndex = Random.Range(0, animalPrefabs.Length);
 
         Instantiate(animalPrefabs[animalIndex], spawnPos, animalPrefabs[animalIndex].transform.rotation);

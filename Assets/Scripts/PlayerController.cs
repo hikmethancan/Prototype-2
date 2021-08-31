@@ -1,72 +1,49 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float horizontalInput;
-    [SerializeField] float verticalInput;
-    [SerializeField] float speed;
-
-    [SerializeField] GameObject projectTilePrefab;
-
-    [SerializeField] GameObject gameManager;
+    private float horizontalInput;
+    private float speed = 20.0f;
+    private float xRange = 20;
+    public GameObject projectilePrefab;
 
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        Boundaries();
-        Move();
-        ThrowPizza();
-    }
+        // Check for left and right bounds
+        if (transform.position.x < -xRange)
+        {
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        }
 
-    void Move()
-    {
+        if (transform.position.x > xRange)
+        {
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
+
+        // Player movement left to right
         horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(horizontalInput * Time.deltaTime * speed,0,verticalInput *Time.deltaTime *speed);
-    }
+        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
 
-    void ThrowPizza()
-    {
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(projectTilePrefab,transform.position,projectTilePrefab.transform.rotation);
-        }
-    }
+            // No longer necessary to Instantiate prefabs
+            // Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
 
-    void Boundaries()
-    {
-        // Player control boundaries
-        if (transform.position.x <= -15f)
-        {
-            transform.position = new Vector3(-15, transform.position.y, transform.position.z);
+            // Get an object object from the pool
+            GameObject pooledProjectile = ObjectPooler.SharedInstance.GetPooledObject();
+            if (pooledProjectile != null)
+            {
+                pooledProjectile.SetActive(true); // activate it
+                pooledProjectile.transform.position = transform.position; // position it at player
+            }
         }
-        else if (transform.position.x >= 15f)
-        {
-            transform.position = new Vector3(15f, transform.position.y, transform.position.z);
-        }
-        else if (transform.position.z < -1.5f)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -1.5f);
-        }
-        else if (transform.position.z > 16f)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 15f);  
-        }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Animal")
-        {
-            gameManager.GetComponent<GameManager>().GameOverPanel();
-        }
+
 
     }
-
-
-
-
-
 }

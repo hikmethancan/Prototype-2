@@ -809,9 +809,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2749437193141631055}
   - component: {fileID: 2749437193148880815}
-  - component: {fileID: 2749437191710906254}
   - component: {fileID: 2233484316946543355}
   - component: {fileID: 7072001505266164465}
+  - component: {fileID: 3270752184489485015}
   m_Layer: 0
   m_Name: SimpleFarmer_Woman_01_Brown
   m_TagString: Untagged
@@ -857,22 +857,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2749437191710906254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2749437193141593199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7451f99a2f30c8a45a82cdc47cb54918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalInput: 0
-  verticalInput: 0
-  speed: 14
-  projectTilePrefab: {fileID: 6651448033447943467, guid: 4a05b75c41806bb49a84fd1955f0ffae, type: 3}
 --- !u!65 &2233484316946543355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -902,6 +886,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &3270752184489485015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749437193141593199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e917c52987daa41af6a0305d9813c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 6651448033447943467, guid: 4a05b75c41806bb49a84fd1955f0ffae, type: 3}
 --- !u!1 &2749437193141593201
 GameObject:
   m_ObjectHideFlags: 0
